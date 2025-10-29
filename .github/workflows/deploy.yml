@@ -1,4 +1,4 @@
-name: Deploy to Aliyun HK
+name: Deploy static to Aliyun HK
 
 on:
   push:
@@ -9,25 +9,13 @@ env:
   SERVER_IP: ${{ vars.SERVER_IP }}
   SERVER_USER: ${{ vars.SERVER_USER }}
   WEB_ROOT: ${{ vars.WEB_ROOT }}
-  BUILD_DIR: ${{ vars.BUILD_DIR || 'dist' }}
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        with:
-          node-version: '20'
-
-      - name: Install & Build
-        run: |
-          npm ci || npm i
-          npm run build
 
       - name: Setup SSH
         run: |
@@ -36,6 +24,10 @@ jobs:
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -H ${{ env.SERVER_IP }} >> ~/.ssh/known_hosts
 
-      - name: Rsync deploy (upload static assets)
+      - name: Rsync deploy (sync repo root)
         run: |
-          rsync -avz --delete ${{ env.BUILD_DIR }}/ ${{ env.SERVER_USER }}@${{ env.SERVER_IP }}:${{ env.WEB_ROOT }}/
+          rsync -avz --delete \
+            --exclude ".git*" \
+            --exclude ".github" \
+            --exclude "README.*" \
+            ./ ${{ env.SERVER_USER }}@${{ env.SERVER_IP }}:${{ env.WEB_ROOT }}/
