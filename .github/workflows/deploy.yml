@@ -1,4 +1,4 @@
-name: Deploy static to Aliyun HK
+name: Deploy to Aliyun HK
 
 on:
   push:
@@ -9,25 +9,123 @@ env:
   SERVER_IP: ${{ vars.SERVER_IP }}
   SERVER_USER: ${{ vars.SERVER_USER }}
   WEB_ROOT: ${{ vars.WEB_ROOT }}
+  NODE_VERSION: '20'
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
+      - name: 📥 Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup SSH
+      - name: 🔑 Setup SSH
         run: |
           mkdir -p ~/.ssh
           echo "${{ secrets.SSH_PRIVATE_KEY }}" > ~/.ssh/id_ed25519
           chmod 600 ~/.ssh/id_ed25519
           ssh-keyscan -H ${{ env.SERVER_IP }} >> ~/.ssh/known_hosts
 
-      - name: Rsync deploy (sync repo root)
+      - name: 📦 Sync files to server
         run: |
           rsync -avz --delete \
             --exclude ".git*" \
             --exclude ".github" \
             --exclude "README.*" \
+            --exclude "node_modules" \
+            --exclude ".DS_Store" \
+            --exclude "*.log" \
+            --exclude "logs/" \
             ./ ${{ env.SERVER_USER }}@${{ env.SERVER_IP }}:${{ env.WEB_ROOT }}/
+
+      - name: 🔐 Create .env file on server
+        run: |
+          ssh ${{ env.SERVER_USER }}@${{ env.SERVER_IP }} << 'EOF'
+            cd ${{ env.WEB_ROOT }}
+
+            # 创建 .env 文件(如果不存在)
+            if [ ! -f .env ]; then
+              cat > .env << 'ENVEOF'
+          MONGODB_URI=${{ secrets.MONGODB_URI }}
+          PORT=3000
+          NODE_ENV=production
+          ENVEOF
+              echo "✅ .env 文件已创建"
+            else
+              echo "ℹ️  .env 文件已存在，跳过创建"
+            fi
+          EOF
+
+      - name: 📦 Install dependencies
+        run: |
+          ssh ${{ env.SERVER_USER }}@${{ env.SERVER_IP }} << 'EOF'
+            cd ${{ env.WEB_ROOT }}
+
+            # 检查 Node.js 是否安装
+            if ! command -v node &> /dev/null; then
+              echo "❌ Node.js 未安装，请先安装 Node.js"
+              exit 1
+            fi
+
+            echo "📦 安装 npm 依赖..."
+            npm install --production
+
+            echo "✅ 依赖安装完成"
+          EOF
+
+      - name: 🚀 Deploy with PM2
+        run: |
+          ssh ${{ env.SERVER_USER }}@${{ env.SERVER_IP }} << 'EOF'
+            cd ${{ env.WEB_ROOT }}
+
+            # 检查 PM2 是否安装
+            if ! command -v pm2 &> /dev/null; then
+              echo "📦 安装 PM2..."
+              npm install -g pm2
+            fi
+
+            # 检查应用是否已在运行
+            if pm2 describe ziwuxx-api &> /dev/null; then
+              echo "🔄 重启应用..."
+              pm2 restart ziwuxx-api
+            else
+              echo "🚀 首次启动应用..."
+              pm2 start server.js --name ziwuxx-api
+              pm2 save
+            fi
+
+            # 显示应用状态
+            echo ""
+            echo "📊 应用状态:"
+            pm2 list
+
+            echo ""
+            echo "✅ 部署完成!"
+          EOF
+
+      - name: 📊 Deployment Summary
+        if: success()
+        run: |
+          echo "🎉 部署成功完成!"
+          echo ""
+          echo "📝 部署信息:"
+          echo "  - 服务器: ${{ env.SERVER_IP }}"
+          echo "  - 部署路径: ${{ env.WEB_ROOT }}"
+          echo "  - Node.js 版本: $(ssh ${{ env.SERVER_USER }}@${{ env.SERVER_IP }} 'node --version')"
+          echo "  - 应用名称: ziwuxx-api"
+          echo ""
+          echo "🔗 访问地址:"
+          echo "  - 用户表单: http://${{ env.SERVER_IP }}:3000/contact-form.html"
+          echo "  - 管理后台: http://${{ env.SERVER_IP }}:3000/admin.html"
+          echo "  - API健康检查: http://${{ env.SERVER_IP }}:3000/api/health"
+
+      - name: ❌ Deployment Failed
+        if: failure()
+        run: |
+          echo "❌ 部署失败，请检查日志"
+          echo ""
+          echo "常见问题排查:"
+          echo "1. SSH密钥是否正确配置"
+          echo "2. 服务器上是否安装了 Node.js"
+          echo "3. MongoDB连接字符串是否正确"
+          echo "4. 服务器防火墙是否开放3000端口"
