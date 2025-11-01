@@ -16,51 +16,81 @@
 
 ## ✅ 解决方案(2分钟)
 
-### 方法1: 配置Nginx反向代理(推荐)
+### 方法1: 使用部署脚本(最简单 ⭐推荐)
 
-SSH登录服务器,执行:
-
-```bash
-# 1. 创建Nginx配置
-sudo nano /etc/nginx/sites-available/ziwuxx
-```
-
-粘贴以下内容:
-```nginx
-server {
-    listen 80;
-    server_name yourdomain.com;  # 改成你的域名
-
-    root /var/www/ziwuxx;  # 改成你的部署路径
-    index index.html;
-
-    # 静态文件
-    location / {
-        try_files $uri $uri/ =404;
-    }
-
-    # API代理到Node.js
-    location /api {
-        proxy_pass http://localhost:3000;
-        proxy_set_header Host $host;
-        proxy_set_header X-Real-IP $remote_addr;
-    }
-}
-```
+项目中已包含完整的Nginx配置文件和自动部署脚本!
 
 ```bash
-# 2. 启用配置
-sudo ln -s /etc/nginx/sites-available/ziwuxx /etc/nginx/sites-enabled/
+# 1. SSH登录服务器
+ssh root@你的服务器IP
 
-# 3. 测试并重启
+# 2. 找到项目路径 (查看PM2应用的路径)
+pm2 info ziwuxx-api
+# 记下 "script path" 的目录路径
+
+# 3. 进入项目目录 (替换为实际路径)
+cd /root/ziwuxx_official  # 或其他实际路径
+
+# 4. 运行自动部署脚本
+sudo bash deploy-nginx.sh
+```
+
+脚本会自动:
+- ✅ 检查环境
+- ✅ 备份现有配置
+- ✅ 部署新配置
+- ✅ 测试配置
+- ✅ 重启Nginx
+- ✅ 验证工作状态
+
+完成!就这么简单! 🎉
+
+---
+
+### 方法2: 手动配置(如果脚本不可用)
+
+SSH登录服务器:
+
+```bash
+# 1. 找到项目路径并进入
+pm2 info ziwuxx-api  # 查看项目路径
+cd /root/ziwuxx_official  # 替换为实际路径
+
+# 2. 使用项目中的配置文件
+sudo cp nginx-ziwuxx.conf /etc/nginx/sites-available/ziwuxx
+
+# 3. 启用配置
+sudo ln -sf /etc/nginx/sites-available/ziwuxx /etc/nginx/sites-enabled/
+
+# 4. 测试并重启
 sudo nginx -t
 sudo systemctl restart nginx
 
-# 4. 验证
-curl http://yourdomain.com/api/health
+# 5. 验证
+curl http://ziwuxx.com/api/health
 ```
 
 ✅ 完成!现在表单应该可以正常提交了。
+
+---
+
+### ⚠️ 重要:配置文件关键点
+
+确保Nginx配置中 `location /api/` 包含结尾的斜杠:
+
+```nginx
+# ✅ 正确 - 注意结尾的斜杠
+location /api/ {
+    proxy_pass http://127.0.0.1:3000;
+    ...
+}
+
+# ❌ 错误 - 缺少斜杠会导致405错误
+location /api {
+    proxy_pass http://127.0.0.1:3000;
+    ...
+}
+```
 
 ### 方法2: 修改前端代码(临时方案)
 
