@@ -25,7 +25,7 @@ jobs:
             pwd
 
             echo "== go to project =="
-            cd "${{ secrets.DEPLOY_PATH }}"
+            cd /var/www/mysite/ziwuxx_official
 
             echo "== pwd after =="
             pwd
