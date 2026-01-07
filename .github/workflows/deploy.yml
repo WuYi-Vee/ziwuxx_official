@@ -8,46 +8,37 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Deploy via SSH
-        uses: appleboy/ssh-action@v1.0.3
-        with:
-          host: ${{ secrets.DEPLOY_HOST }}
-          username: ${{ secrets.DEPLOY_USER }}
-          key: ${{ secrets.DEPLOY_SSH_KEY }}
-          script: |
-            set -euxo pipefail
+      - name: Write SSH key + Deploy
+        run: |
+          set -e
 
-            echo "== whoami =="
-            whoami
-            echo "== hostname =="
-            hostname
-            echo "== pwd before =="
-            pwd
+          mkdir -p ~/.ssh
 
-            echo "== go to project =="
-            cd /var/www/mysite/ziwuxx_official
+          # 写入私钥（从 base64 还原）
+          echo "${{ secrets.DEPLOY_SSH_KEY_B64 }}" | base64 -d > ~/.ssh/id_ed25519
+          chmod 600 ~/.ssh/id_ed25519
 
-            echo "== pwd after =="
-            pwd
-            echo "== list files =="
-            ls -la
+          # 预先信任服务器主机指纹（避免首次连接卡住）
+          ssh-keyscan -H ${{ secrets.DEPLOY_HOST }} >> ~/.ssh/known_hosts
 
-            echo "== pull latest code =="
+          # 执行远程部署脚本
+          ssh -i ~/.ssh/id_ed25519 -o StrictHostKeyChecking=yes ${{ secrets.DEPLOY_USER }}@${{ secrets.DEPLOY_HOST }} << 'EOF'
+            set -eu
+
+            APP_DIR="/var/www/mysite/ziwuxx_official"
+            cd "$APP_DIR"
+
             git fetch --all
             git reset --hard origin/main
 
-            echo "== install deps =="
             if [ -f package-lock.json ]; then
               npm ci --omit=dev
             else
               npm install --omit=dev
             fi
 
-            echo "== restart pm2 =="
             pm2 restart ziwuxx-api || pm2 start server.js --name ziwuxx-api
             pm2 save
 
-            echo "== health check =="
             curl -I --max-time 5 http://127.0.0.1:3000 || true
-
-            
+          EOF
