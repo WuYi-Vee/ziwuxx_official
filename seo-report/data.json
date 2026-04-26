@@ -1,0 +1,397 @@
+[
+  {
+    "url": "https://spiky-attributes-251983.framer.app/products/dianhuo2",
+    "score": 72,
+    "issues": [
+      {
+        "type": "warning",
+        "message": "Title too short (4 chars). Aim for 50-60 characters."
+      },
+      {
+        "type": "warning",
+        "message": "Meta description too short (4 chars). Aim for 150-160 characters."
+      },
+      {
+        "type": "error",
+        "message": "Missing <h1> heading"
+      },
+      {
+        "type": "warning",
+        "message": "55 image(s) missing alt text"
+      }
+    ],
+    "passed": [
+      "Canonical URL is set",
+      "Open Graph meta tags present",
+      "Viewport meta tag present",
+      "Language attribute set"
+    ],
+    "meta": {
+      "title": "点火计划",
+      "description": "点火计划",
+      "canonical": "https://spiky-attributes-251983.framer.app/products/dianhuo2",
+      "ogImage": "https://framerusercontent.com/assets/oRIYiord3vjzeffTaItOv7WvoHg.jpg"
+    }
+  },
+  {
+    "url": "https://spiky-attributes-251983.framer.app/",
+    "score": 80,
+    "issues": [
+      {
+        "type": "warning",
+        "message": "Title too short (5 chars). Aim for 50-60 characters."
+      },
+      {
+        "type": "warning",
+        "message": "Multiple <h1> tags found (3). Best practice is to have only one."
+      },
+      {
+        "type": "warning",
+        "message": "102 image(s) missing alt text"
+      }
+    ],
+    "passed": [
+      "Meta description is properly configured",
+      "Canonical URL is set",
+      "Open Graph meta tags present",
+      "Viewport meta tag present",
+      "Language attribute set"
+    ],
+    "meta": {
+      "title": "Porto",
+      "description": "Porto, a minimal portfolio framer template, is a perfect fit for personal portfolios, designers, freelancers, agencies, and photographers.",
+      "canonical": "https://spiky-attributes-251983.framer.app/",
+      "ogImage": "https://framerusercontent.com/images/Y2hDnlZarjPJwwtYxc065dEr57A.png"
+    }
+  },
+  {
+    "url": "https://spiky-attributes-251983.framer.app/products/mingqi2",
+    "score": 80,
+    "issues": [
+      {
+        "type": "warning",
+        "message": "Title too short (5 chars). Aim for 50-60 characters."
+      },
+      {
+        "type": "warning",
+        "message": "Multiple <h1> tags found (4). Best practice is to have only one."
+      },
+      {
+        "type": "warning",
+        "message": "26 image(s) missing alt text"
+      }
+    ],
+    "passed": [
+      "Meta description is properly configured",
+      "Canonical URL is set",
+      "Open Graph meta tags present",
+      "Viewport meta tag present",
+      "Language attribute set"
+    ],
+    "meta": {
+      "title": "Porto",
+      "description": "Porto, a minimal portfolio framer template, is a perfect fit for personal portfolios, designers, freelancers, agencies, and photographers.",
+      "canonical": "https://spiky-attributes-251983.framer.app/products/mingqi2",
+      "ogImage": "https://framerusercontent.com/images/Y2hDnlZarjPJwwtYxc065dEr57A.png"
+    }
+  },
+  {
+    "url": "https://spiky-attributes-251983.framer.app/products/pathway",
+    "score": 80,
+    "issues": [
+      {
+        "type": "warning",
+        "message": "Title too short (5 chars). Aim for 50-60 characters."
+      },
+      {
+        "type": "warning",
+        "message": "Multiple <h1> tags found (2). Best practice is to have only one."
+      },
+      {
+        "type": "warning",
+        "message": "37 image(s) missing alt text"
+      }
+    ],
+    "passed": [
+      "Meta description is properly configured",
+      "Canonical URL is set",
+      "Open Graph meta tags present",
+      "Viewport meta tag present",
+      "Language attribute set"
+    ],
+    "meta": {
+      "title": "Porto",
+      "description": "Porto, a minimal portfolio framer template, is a perfect fit for personal portfolios, designers, freelancers, agencies, and photographers.",
+      "canonical": "https://spiky-attributes-251983.framer.app/products/pathway",
+      "ogImage": "https://framerusercontent.com/images/Y2hDnlZarjPJwwtYxc065dEr57A.png"
+    }
+  },
+  {
+    "url": "https://spiky-attributes-251983.framer.app/history",
+    "score": 85,
+    "issues": [
+      {
+        "type": "warning",
+        "message": "Title too short (4 chars). Aim for 50-60 characters."
+      },
+      {
+        "type": "warning",
+        "message": "11 image(s) missing alt text"
+      }
+    ],
+    "passed": [
+      "Meta description is properly configured",
+      "Single H1 heading present",
+      "Canonical URL is set",
+      "Open Graph meta tags present",
+      "Viewport meta tag present",
+      "Language attribute set"
+    ],
+    "meta": {
+      "title": "新闻动态",
+      "description": "Porto, a minimal portfolio framer template, is a perfect fit for personal portfolios, designers, freelancers, agencies, and photographers.",
+      "canonical": "https://spiky-attributes-251983.framer.app/history",
+      "ogImage": "https://framerusercontent.com/images/Y2hDnlZarjPJwwtYxc065dEr57A.png"
+    }
+  },
+  {
+    "url": "https://spiky-attributes-251983.framer.app/news",
+    "score": 85,
+    "issues": [
+      {
+        "type": "warning",
+        "message": "Title too short (4 chars). Aim for 50-60 characters."
+      },
+      {
+        "type": "warning",
+        "message": "20 image(s) missing alt text"
+      }
+    ],
+    "passed": [
+      "Meta description is properly configured",
+      "Single H1 heading present",
+      "Canonical URL is set",
+      "Open Graph meta tags present",
+      "Viewport meta tag present",
+      "Language attribute set"
+    ],
+    "meta": {
+      "title": "新闻动态",
+      "description": "Porto, a minimal portfolio framer template, is a perfect fit for personal portfolios, designers, freelancers, agencies, and photographers.",
+      "canonical": "https://spiky-attributes-251983.framer.app/news",
+      "ogImage": "https://framerusercontent.com/images/Y2hDnlZarjPJwwtYxc065dEr57A.png"
+    }
+  },
+  {
+    "url": "https://spiky-attributes-251983.framer.app/products/x-y-z2",
+    "score": 85,
+    "issues": [
+      {
+        "type": "warning",
+        "message": "Title too short (3 chars). Aim for 50-60 characters."
+      },
+      {
+        "type": "warning",
+        "message": "29 image(s) missing alt text"
+      }
+    ],
+    "passed": [
+      "Meta description is properly configured",
+      "Single H1 heading present",
+      "Canonical URL is set",
+      "Open Graph meta tags present",
+      "Viewport meta tag present",
+      "Language attribute set"
+    ],
+    "meta": {
+      "title": "xyz",
+      "description": "Porto, a minimal portfolio framer template, is a perfect fit for personal portfolios, designers, freelancers, agencies, and photographers.",
+      "canonical": "https://spiky-attributes-251983.framer.app/products/x-y-z2",
+      "ogImage": "https://framerusercontent.com/images/Y2hDnlZarjPJwwtYxc065dEr57A.png"
+    }
+  },
+  {
+    "url": "https://spiky-attributes-251983.framer.app/portfolio/grad",
+    "score": 89,
+    "issues": [
+      {
+        "type": "warning",
+        "message": "Title too short (4 chars). Aim for 50-60 characters."
+      },
+      {
+        "type": "warning",
+        "message": "3 image(s) missing alt text"
+      }
+    ],
+    "passed": [
+      "Meta description is properly configured",
+      "Single H1 heading present",
+      "Canonical URL is set",
+      "Open Graph meta tags present",
+      "Viewport meta tag present",
+      "Language attribute set"
+    ],
+    "meta": {
+      "title": "硕士申请",
+      "description": "Porto, a minimal portfolio framer template, is a perfect fit for personal portfolios, designers, freelancers, agencies, and photographers.",
+      "canonical": "https://spiky-attributes-251983.framer.app/portfolio/grad",
+      "ogImage": "https://framerusercontent.com/images/Y2hDnlZarjPJwwtYxc065dEr57A.png"
+    }
+  },
+  {
+    "url": "https://spiky-attributes-251983.framer.app/portfolio/undergrad",
+    "score": 89,
+    "issues": [
+      {
+        "type": "warning",
+        "message": "Title too short (4 chars). Aim for 50-60 characters."
+      },
+      {
+        "type": "warning",
+        "message": "3 image(s) missing alt text"
+      }
+    ],
+    "passed": [
+      "Meta description is properly configured",
+      "Single H1 heading present",
+      "Canonical URL is set",
+      "Open Graph meta tags present",
+      "Viewport meta tag present",
+      "Language attribute set"
+    ],
+    "meta": {
+      "title": "本科申请",
+      "description": "Porto, a minimal portfolio framer template, is a perfect fit for personal portfolios, designers, freelancers, agencies, and photographers.",
+      "canonical": "https://spiky-attributes-251983.framer.app/portfolio/undergrad",
+      "ogImage": "https://framerusercontent.com/images/Y2hDnlZarjPJwwtYxc065dEr57A.png"
+    }
+  },
+  {
+    "url": "https://spiky-attributes-251983.framer.app/products",
+    "score": 90,
+    "issues": [
+      {
+        "type": "warning",
+        "message": "Title too short (5 chars). Aim for 50-60 characters."
+      },
+      {
+        "type": "warning",
+        "message": "Multiple <h1> tags found (2). Best practice is to have only one."
+      }
+    ],
+    "passed": [
+      "Meta description is properly configured",
+      "All images have alt attributes",
+      "Canonical URL is set",
+      "Open Graph meta tags present",
+      "Viewport meta tag present",
+      "Language attribute set"
+    ],
+    "meta": {
+      "title": "Porto",
+      "description": "Porto, a minimal portfolio framer template, is a perfect fit for personal portfolios, designers, freelancers, agencies, and photographers.",
+      "canonical": "https://spiky-attributes-251983.framer.app/products",
+      "ogImage": "https://framerusercontent.com/images/Y2hDnlZarjPJwwtYxc065dEr57A.png"
+    }
+  },
+  {
+    "url": "https://spiky-attributes-251983.framer.app/products/dianhuo1",
+    "score": 95,
+    "issues": [
+      {
+        "type": "warning",
+        "message": "Title too short (5 chars). Aim for 50-60 characters."
+      }
+    ],
+    "passed": [
+      "Meta description is properly configured",
+      "Single H1 heading present",
+      "All images have alt attributes",
+      "Canonical URL is set",
+      "Open Graph meta tags present",
+      "Viewport meta tag present",
+      "Language attribute set"
+    ],
+    "meta": {
+      "title": "Porto",
+      "description": "Porto, a minimal portfolio framer template, is a perfect fit for personal portfolios, designers, freelancers, agencies, and photographers.",
+      "canonical": "https://spiky-attributes-251983.framer.app/products/dianhuo1",
+      "ogImage": "https://framerusercontent.com/images/Y2hDnlZarjPJwwtYxc065dEr57A.png"
+    }
+  },
+  {
+    "url": "https://spiky-attributes-251983.framer.app/products/mingqi1",
+    "score": 95,
+    "issues": [
+      {
+        "type": "warning",
+        "message": "Title too short (5 chars). Aim for 50-60 characters."
+      }
+    ],
+    "passed": [
+      "Meta description is properly configured",
+      "Single H1 heading present",
+      "All images have alt attributes",
+      "Canonical URL is set",
+      "Open Graph meta tags present",
+      "Viewport meta tag present",
+      "Language attribute set"
+    ],
+    "meta": {
+      "title": "Porto",
+      "description": "Porto, a minimal portfolio framer template, is a perfect fit for personal portfolios, designers, freelancers, agencies, and photographers.",
+      "canonical": "https://spiky-attributes-251983.framer.app/products/mingqi1",
+      "ogImage": "https://framerusercontent.com/images/Y2hDnlZarjPJwwtYxc065dEr57A.png"
+    }
+  },
+  {
+    "url": "https://spiky-attributes-251983.framer.app/products/novacapital1",
+    "score": 95,
+    "issues": [
+      {
+        "type": "warning",
+        "message": "Title too short (5 chars). Aim for 50-60 characters."
+      }
+    ],
+    "passed": [
+      "Meta description is properly configured",
+      "Single H1 heading present",
+      "All images have alt attributes",
+      "Canonical URL is set",
+      "Open Graph meta tags present",
+      "Viewport meta tag present",
+      "Language attribute set"
+    ],
+    "meta": {
+      "title": "Porto",
+      "description": "Porto, a minimal portfolio framer template, is a perfect fit for personal portfolios, designers, freelancers, agencies, and photographers.",
+      "canonical": "https://spiky-attributes-251983.framer.app/products/novacapital1",
+      "ogImage": "https://framerusercontent.com/images/Y2hDnlZarjPJwwtYxc065dEr57A.png"
+    }
+  },
+  {
+    "url": "https://spiky-attributes-251983.framer.app/products/qunxing1",
+    "score": 95,
+    "issues": [
+      {
+        "type": "warning",
+        "message": "Title too short (5 chars). Aim for 50-60 characters."
+      }
+    ],
+    "passed": [
+      "Meta description is properly configured",
+      "Single H1 heading present",
+      "All images have alt attributes",
+      "Canonical URL is set",
+      "Open Graph meta tags present",
+      "Viewport meta tag present",
+      "Language attribute set"
+    ],
+    "meta": {
+      "title": "Porto",
+      "description": "Porto, a minimal portfolio framer template, is a perfect fit for personal portfolios, designers, freelancers, agencies, and photographers.",
+      "canonical": "https://spiky-attributes-251983.framer.app/products/qunxing1",
+      "ogImage": "https://framerusercontent.com/images/Y2hDnlZarjPJwwtYxc065dEr57A.png"
+    }
+  }
+]
